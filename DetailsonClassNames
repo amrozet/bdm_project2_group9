@@ -1,0 +1,3 @@
+DCMap & DCReduce are map and reducers for question 1 with Driver as the main class
+JsonInputFormat and JsonOverider are files for question 2, JsonInputFormat has classes which are overriding RecordReader and TextInputFormat
+and JsonOverider has main and map,reducers.

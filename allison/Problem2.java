@@ -49,7 +49,12 @@ public class Problem2 {
       String line = "";
       String result = "";
 
-      while (!line.equals("},")) {
+      while (!line.equals("{")) {
+        if (!lineReader.nextKeyValue()) { return false; }
+        line = lineReader.getCurrentValue().toString().trim();
+      }
+
+      while (!line.replace(",","").equals("}")) {
         if (!lineReader.nextKeyValue()) { return false; }
         line = lineReader.getCurrentValue().toString().trim();
         String[] field = line.split(":");

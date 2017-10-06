@@ -51,11 +51,14 @@ public class Problem1v2 {
         String record_line = bReader.readLine();
         while (record_line != null) {
           String[] records = record_line.split(",");
-          ArrayList<Integer> coords = new ArrayList<Integer>(2);
-          for (int i=0; i<records.length; i++) {
-            coords.add(Integer.parseInt(records[i]));
+          int x = Integer.parseInt(records[0]);
+          int y = Integer.parseInt(records[1]);
+          if (x>=windCorners.get(0) && x<=windCorners.get(2) && y>=windCorners.get(1) && y<=windCorners.get(3)) {
+            ArrayList<Integer> coords = new ArrayList<Integer>(2);
+            coords.add(x);
+            coords.add(y);
+            points.add(coords);
           }
-          points.add(coords);
           record_line = bReader.readLine();
         }
         bReader.close();
@@ -70,16 +73,14 @@ public class Problem1v2 {
       for (ArrayList<Integer> p : points) {
         int x = p.get(0);
         int y = p.get(1);
-        if (x>=windCorners.get(0) && x<=windCorners.get(2) && y>=windCorners.get(1) && y<=windCorners.get(3)) {
-          if (x>=Integer.parseInt(corners[1]) && x<=Integer.parseInt(corners[3]) && y>=Integer.parseInt(corners[2]) && y<=Integer.parseInt(corners[4])) {
-            //temp.add(rect);
-            rectID.set(corners[0]);
-            context.write(rectID, new Text(x+","+y));
-          }
+
+        if (x>=Integer.parseInt(corners[1]) && x<=Integer.parseInt(corners[3]) && y>=Integer.parseInt(corners[2]) && y<=Integer.parseInt(corners[4])) {
+          //temp.add(rect);
+          rectID.set(corners[0]);
+          context.write(rectID, new Text(x+","+y));
         }
       }
     }
-
   }
 
   public static void main(String[] args) throws Exception {
